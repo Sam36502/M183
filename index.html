@@ -2,15 +2,46 @@
 <html>
 	<head>
 		<title>Insecure Deserialisation</title>
+		<link rel="stylesheet" href="style/style.css">
 	</head>
 	<body>
 	
 		<h1>Insecure Deserialisation Demo</h1>
 		
-		<form action="php/login.php" method="post">
-			<input type="text" name="uname" placeholder="Username"><br>
-			<input type="password" name="pword" placeholder="Password"><br>
-			<input type="submit" value="Log in">
+		<form id="demo" action="php/vulnerable.php" method="post">
+			<table>
+				<tr>
+					<th>Serialised String</th>
+					<td><textarea name="data" form="demo"></textarea></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Login"></td>
+				</tr>
+			</table>
+		</form>
+		
+		<hr>
+		
+		<h2>Payload Creator</h2>
+		
+		<form id="gen" action="php/payload_creator.php" method="post">
+			<table>
+				<tr>
+					<tr>
+						<th>Filename to save as</th>
+						<td><input type="text" name="file"></td>
+					</tr>
+					<th>Payload File Contents</th>
+					<td>
+					<textarea name="content" form="gen">&lt;?php phpinfo(); ?&gt;</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Create Payload"></td>
+				</tr>
+			</table>
 		</form>
 	
 	</body>
